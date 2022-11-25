@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Nova Festa</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<div>
+<form [formGroup]="festaForm" (ngSubmit)="cadastraFesta()">
+<ion-list>
+  <ion-item>
+    <ion-label>Nome da Festa:</ion-label>
+    <ion-input formControlName="nome" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Tipo de Festa:</ion-label>
+    <ion-select formControlName="tipo" placeholder="Selecione o tipo da festa">
+      <ion-select-option value="casamento">Casamento</ion-select-option>
+      <ion-select-option value="aniversario">Aniversario</ion-select-option>
+      <ion-select-option value="Show">Show</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label >Numero de Pessoas:</ion-label>
+    <ion-input formControlName="numeroPessoa" type="number"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label>Quantidade de Lugares:</ion-label>
+    <ion-input full formControlName="qtdLugares" type="number"></ion-input>
+  </ion-item>
+  <br>
+  <ion-button class="btn" type="button" (click)="addConvidado()">Adicionar Convidado</ion-button>
+  <div formArrayName="convidados">
+    <ion-item 
+      *ngFor="let convidados of getConvidadoArray.controls; let i=index" 
+      [formGroupName]="i">
+      <ion-icon 
+        item-end 
+        color="danger" 
+        name="trash" 
+        (click)="deleteConvidado(i)">
+      </ion-icon>
+      <ion-item>
+        <ion-input 
+          full 
+          placeholder="Nome" 
+          formControlName="nome">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+    </ion-item>
+  </div>
+</ion-list>
+<br>
+<ion-button type="submit" expand="block" [disabled]="festaForm.invalid" >Salvar</ion-button>
+</form>
+</div>
+</ion-content>

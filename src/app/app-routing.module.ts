@@ -10,6 +10,24 @@ const routes: Routes = [
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  },
+  {
+    path: '',
+    redirectTo: 'festas/festas',
+    pathMatch: 'full'
+  },
+  {
+    path: 'festas/:id',
+    loadChildren: () => import('./festas/festas.module').then( m => m.FestasPageModule)
+  },
+  {
+    path: '',
+    redirectTo: 'novafesta/novafesta',
+    pathMatch: 'full'
+  },
+  {
+    path: 'novafesta/:id',
+    loadChildren: () => import('./novafesta/novafesta.module').then( m => m.NovaFestaPageModule)
   }
 ];
 

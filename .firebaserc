@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "the-fest-ionic": {
+      "hosting": {
+        "app": [
+          "the-fest-ionic"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "the-fest-ionic"
+  }
+}
